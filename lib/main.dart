@@ -87,6 +87,17 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  Widget createScreenFor(int screenIndex) {
+    switch (screenIndex) {
+      case 0:
+        return const WritingListView();
+      case 1:
+        return const VocabularyListView();
+      default:
+        return Container();
+    }
+  }
+
   PreferredSizeWidget createAppBar() {
     return AppBar(
       title: const Text("learn Georgian"),
@@ -148,7 +159,7 @@ class _MyAppState extends State<MyApp> {
         if (constraints.maxWidth < narrowScreenWidthThreshold) {
           return Scaffold(
             appBar: createAppBar(),
-            body: const WritingListView(),
+            body: createScreenFor(screenIndex),
             bottomNavigationBar: NavigationBars(
               onSelectItem: handleScreenChanged,
               selectedIndex: screenIndex,
@@ -169,7 +180,7 @@ class _MyAppState extends State<MyApp> {
                           onSelectItem: handleScreenChanged,
                           selectedIndex: screenIndex)),
                   const VerticalDivider(thickness: 1, width: 1),
-                  // const WritingListView(),
+                  Expanded(child: createScreenFor(screenIndex)),
                 ],
               ),
             ),
