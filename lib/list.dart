@@ -35,8 +35,8 @@ final List<Card> _listElement = _elements
         ))
     .toList();
 
-class ListViewElement extends StatelessWidget {
-  const ListViewElement({super.key});
+class WritingListView extends StatelessWidget {
+  const WritingListView({super.key});
 
   @override
   Widget build(BuildContext context) {
