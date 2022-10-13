@@ -2,9 +2,13 @@ import 'package:adaptive_components/adaptive_components.dart';
 import 'package:flutter/material.dart';
 
 import 'home_highlight.dart';
+import 'home_recent.dart';
 
 import '../../../shared/extensions.dart';
 import '../../../shared/views/brightness_toggle.dart';
+
+import '../../../shared/classes/playlist.dart';
+import '../../../shared/providers/playlists.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,6 +20,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final PlaylistsProvider playlistProvider = PlaylistsProvider();
+    final List<Playlist> playlists = playlistProvider.playlists;
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.isMobile) {
@@ -50,10 +56,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                     ),
-                    // HomeRecent(
-                    //   playlists: playlists,
-                    //   axis: Axis.vertical,
-                    // ),
+                    HomeRecent(
+                      playlists: playlists,
+                      axis: Axis.vertical,
+                    ),
                     // PlaylistSongs(
                     //   playlist: topSongs,
                     //   constraints: constraints,
@@ -120,9 +126,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           style: context.headlineSmall,
                         ),
                       ),
-                      // HomeRecent(
-                      //   playlists: playlists,
-                      // ),
+                      HomeRecent(
+                        playlists: playlists,
+                      ),
                     ],
                   ),
                 ),

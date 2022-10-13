@@ -41,6 +41,7 @@ dev_dependencies:
   adaptive_components: ^0.0.7
   desktop_window: ^0.4.0
   dynamic_color: ^1.5.4
+  english_words: ^4.0.0
   flutter_test:
     sdk: flutter
   flutter_bloc: ^8.1.1
