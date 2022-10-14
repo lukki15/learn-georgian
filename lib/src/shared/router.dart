@@ -28,7 +28,7 @@ const List<NavigationDestination> destinations = [
   NavigationDestination(
     label: 'Chat',
     icon: Icon(Icons.forum_outlined),
-    route: '/vocabulary',
+    route: '/chat',
   ),
   NavigationDestination(
     label: 'Account',
@@ -76,64 +76,19 @@ final appRouter = GoRouter(
           child: PlaylistHomeScreen(),
         ),
       ),
-      // routes: [
-      //   GoRoute(
-      //     path: ':pid',
-      //     pageBuilder: (context, state) => MaterialPage<void>(
-      //       key: state.pageKey,
-      //       child: RootLayout(
-      //         key: _scaffoldKey,
-      //         currentIndex: 1,
-      //         child: PlaylistScreen(
-      //           playlist: playlistsProvider.getPlaylist(state.params['pid']!)!,
-      //         ),
-      //       ),
-      //     ),
-      //   ),
-      // ],
     ),
 
-    // // ArtistHomeScreen
-    // GoRoute(
-    //   path: '/artists',
-    //   pageBuilder: (context, state) => const MaterialPage<void>(
-    //     key: _pageKey,
-    //     child: RootLayout(
-    //       key: _scaffoldKey,
-    //       currentIndex: 2,
-    //       child: ArtistsScreen(),
-    //     ),
-    //   ),
-    //   routes: [
-    //     GoRoute(
-    //       path: ':aid',
-    //       pageBuilder: (context, state) => MaterialPage<void>(
-    //         key: state.pageKey,
-    //         child: RootLayout(
-    //           key: _scaffoldKey,
-    //           currentIndex: 2,
-    //           child: ArtistScreen(
-    //             artist: artistsProvider.getArtist(state.params['aid']!)!,
-    //           ),
-    //         ),
-    //       ),
-    //       // builder: (context, state) => ArtistScreen(
-    //       //   id: state.params['aid']!,
-    //       // ),
-    //     ),
-    //   ],
-    // ),
-    // for (final route in destinations.skip(3))
-    //   GoRoute(
-    //     path: route.route,
-    //     pageBuilder: (context, state) => MaterialPage<void>(
-    //       key: _pageKey,
-    //       child: RootLayout(
-    //         key: _scaffoldKey,
-    //         currentIndex: destinations.indexOf(route),
-    //         child: const SizedBox(),
-    //       ),
-    //     ),
-    //   ),
+    for (final route in destinations.skip(2))
+      GoRoute(
+        path: route.route,
+        pageBuilder: (context, state) => MaterialPage<void>(
+          key: _pageKey,
+          child: RootLayout(
+            key: _scaffoldKey,
+            currentIndex: destinations.indexOf(route),
+            child: const SizedBox(),
+          ),
+        ),
+      ),
   ],
 );
