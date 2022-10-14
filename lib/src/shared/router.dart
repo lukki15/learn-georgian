@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../features/home/view/home_screen.dart';
+import '../features/playlists/view/playlist_home_screen.dart';
+
 import 'views/root_layout.dart';
 
 const _pageKey = ValueKey('_pageKey');
@@ -64,33 +66,32 @@ final appRouter = GoRouter(
       ),
     ),
 
-    // // PlaylistHomeScreen
-    // GoRoute(
-    //   path: '/playlists',
-    //   pageBuilder: (context, state) => const MaterialPage<void>(
-    //     key: _pageKey,
-    //     child: RootLayout(
-    //       key: _scaffoldKey,
-    //       currentIndex: 1,
-    //       child: PlaylistHomeScreen(),
-    //     ),
-    //   ),
-    //   routes: [
-    //     GoRoute(
-    //       path: ':pid',
-    //       pageBuilder: (context, state) => MaterialPage<void>(
-    //         key: state.pageKey,
-    //         child: RootLayout(
-    //           key: _scaffoldKey,
-    //           currentIndex: 1,
-    //           child: PlaylistScreen(
-    //             playlist: playlistsProvider.getPlaylist(state.params['pid']!)!,
-    //           ),
-    //         ),
-    //       ),
-    //     ),
-    //   ],
-    // ),
+    GoRoute(
+      path: '/writing',
+      pageBuilder: (context, state) => const MaterialPage<void>(
+        key: _pageKey,
+        child: RootLayout(
+          key: _scaffoldKey,
+          currentIndex: 1,
+          child: PlaylistHomeScreen(),
+        ),
+      ),
+      // routes: [
+      //   GoRoute(
+      //     path: ':pid',
+      //     pageBuilder: (context, state) => MaterialPage<void>(
+      //       key: state.pageKey,
+      //       child: RootLayout(
+      //         key: _scaffoldKey,
+      //         currentIndex: 1,
+      //         child: PlaylistScreen(
+      //           playlist: playlistsProvider.getPlaylist(state.params['pid']!)!,
+      //         ),
+      //       ),
+      //     ),
+      //   ),
+      // ],
+    ),
 
     // // ArtistHomeScreen
     // GoRoute(
