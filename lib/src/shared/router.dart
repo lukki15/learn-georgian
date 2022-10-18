@@ -91,7 +91,7 @@ final appRouter = GoRouter(
       ),
     ),
 
-    for (final route in destinations.skip(2))
+    for (final route in destinations.skip(3))
       GoRoute(
         path: route.route,
         pageBuilder: (context, state) => MaterialPage<void>(
