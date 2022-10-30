@@ -3,7 +3,7 @@ import './image.dart';
 class Characters {
   final String title;
   final List<String> characters;
-  MyArtistImage cover;
+  CoverImage cover;
 
   Characters({
     required this.title,

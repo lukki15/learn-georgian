@@ -1,5 +1,5 @@
-class MyArtistImage {
-  const MyArtistImage(
+class CoverImage {
+  const CoverImage(
       {required this.image,
       required this.sourceName,
       required this.sourceLink});

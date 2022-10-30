@@ -1,14 +1,8 @@
 import 'package:adaptive_components/adaptive_components.dart';
 import 'package:flutter/material.dart';
 
-import 'home_highlight.dart';
-import 'home_recent.dart';
-
 import '../../../shared/extensions.dart';
 import '../../../shared/views/brightness_toggle.dart';
-
-import '../../../shared/classes/playlist.dart';
-import '../../../shared/providers/playlists.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -20,59 +14,26 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    final PlaylistsProvider playlistProvider = PlaylistsProvider();
-    final List<Playlist> playlists = playlistProvider.playlists;
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.isMobile) {
-          return DefaultTabController(
-            length: 4,
-            child: Scaffold(
+          return Scaffold(
               appBar: AppBar(
                 centerTitle: false,
                 title: const Text('Good morning'),
-                actions: const [BrightnessToggle()],
-                bottom: const TabBar(
-                  isScrollable: true,
-                  tabs: [
-                    Tab(text: 'Home'),
-                    Tab(text: 'Recently Played'),
-                    Tab(text: 'New Releases'),
-                    Tab(text: 'Top Songs'),
-                  ],
-                ),
+                actions: [
+                  const BrightnessToggle(),
+                  IconButton(
+                    icon: const Icon(Icons.account_circle),
+                    tooltip: 'Show Snackbar',
+                    onPressed: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Account')));
+                    },
+                  )
+                ],
               ),
-              body: LayoutBuilder(
-                builder: (context, constraints) => TabBarView(
-                  children: [
-                    SingleChildScrollView(
-                      child: Column(
-                        children: const [
-                          HomeHighlight(),
-                          // HomeArtists(
-                          //   artists: artists,
-                          //   constraints: constraints,
-                          // ),
-                        ],
-                      ),
-                    ),
-                    HomeRecent(
-                      playlists: playlists,
-                      axis: Axis.vertical,
-                    ),
-                    // PlaylistSongs(
-                    //   playlist: topSongs,
-                    //   constraints: constraints,
-                    // ),
-                    // PlaylistSongs(
-                    //   playlist: newReleases,
-                    //   constraints: constraints,
-                    // ),
-                  ],
-                ),
-              ),
-            ),
-          );
+              body: Container());
         }
         return Scaffold(
           body: SingleChildScrollView(
@@ -93,101 +54,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         const SizedBox(width: 20),
                         const BrightnessToggle(),
-                      ],
-                    ),
-                  ),
-                ),
-                AdaptiveContainer(
-                  columnSpan: 12,
-                  child: Column(
-                    children: const [
-                      HomeHighlight(),
-                      // LayoutBuilder(
-                      //   builder: (context, constraints) => HomeArtists(
-                      //     artists: artists,
-                      //     constraints: constraints,
-                      //   ),
-                      // ),
-                    ],
-                  ),
-                ),
-                AdaptiveContainer(
-                  columnSpan: 12,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 15,
-                          vertical: 10,
-                        ),
-                        child: Text(
-                          'Recently played',
-                          style: context.headlineSmall,
-                        ),
-                      ),
-                      HomeRecent(
-                        playlists: playlists,
-                      ),
-                    ],
-                  ),
-                ),
-                AdaptiveContainer(
-                  columnSpan: 12,
-                  child: Padding(
-                    padding: const EdgeInsets.all(15),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Flexible(
-                          flex: 10,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 8, bottom: 8),
-                                child: Text(
-                                  'Top Songs Today',
-                                  style: context.titleLarge,
-                                ),
-                              ),
-                              // LayoutBuilder(
-                              //   builder: (context, constraints) =>
-                              //       PlaylistSongs(
-                              //     playlist: topSongs,
-                              //     constraints: constraints,
-                              //   ),
-                              // ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(width: 25),
-                        Flexible(
-                          flex: 10,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 8, bottom: 8),
-                                child: Text(
-                                  'New Releases',
-                                  style: context.titleLarge,
-                                ),
-                              ),
-                              // LayoutBuilder(
-                              //   builder: (context, constraints) =>
-                              //       PlaylistSongs(
-                              //     playlist: newReleases,
-                              //     constraints: constraints,
-                              //   ),
-                              // ),
-                            ],
-                          ),
-                        ),
                       ],
                     ),
                   ),

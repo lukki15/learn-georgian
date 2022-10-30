@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../features/artists/view/artists_screen.dart';
 import '../features/home/view/home_screen.dart';
-import '../features/playlists/view/playlist_home_screen.dart';
 
 import 'views/root_layout.dart';
 
@@ -67,31 +65,7 @@ final appRouter = GoRouter(
       ),
     ),
 
-    GoRoute(
-      path: '/writing',
-      pageBuilder: (context, state) => const MaterialPage<void>(
-        key: _pageKey,
-        child: RootLayout(
-          key: _scaffoldKey,
-          currentIndex: 1,
-          child: PlaylistHomeScreen(),
-        ),
-      ),
-    ),
-
-    GoRoute(
-      path: '/vocabulary',
-      pageBuilder: (context, state) => const MaterialPage<void>(
-        key: _pageKey,
-        child: RootLayout(
-          key: _scaffoldKey,
-          currentIndex: 1,
-          child: ArtistsScreen(),
-        ),
-      ),
-    ),
-
-    for (final route in destinations.skip(3))
+    for (final route in destinations.skip(1))
       GoRoute(
         path: route.route,
         pageBuilder: (context, state) => MaterialPage<void>(

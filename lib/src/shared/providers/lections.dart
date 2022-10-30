@@ -49,8 +49,8 @@ class LectionProvider {
         title: 'Vocabularies 10', characters: ['წ', 'ჭ', 'ყ'], cover: image()),
   ];
 
-  static MyArtistImage image() {
-    return const MyArtistImage(
+  static CoverImage image() {
+    return const CoverImage(
         image: 'assets/images/tbilisi.jpg',
         sourceLink: 'https://unsplash.com/photos/emWzYc5XC_A',
         sourceName: 'Neil Sengupta');
