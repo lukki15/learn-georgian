@@ -92,6 +92,7 @@ class ThemeProvider extends InheritedWidget {
     return ListTileThemeData(
       shape: shapeMedium,
       selectedColor: colors.secondary,
+      tileColor: colors.onPrimary,
     );
   }
 
