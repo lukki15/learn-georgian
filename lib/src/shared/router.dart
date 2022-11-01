@@ -10,29 +10,24 @@ const _scaffoldKey = ValueKey('_scaffoldKey');
 
 const List<NavigationDestination> destinations = [
   NavigationDestination(
-    label: 'Home',
-    icon: Icon(Icons.home),
+    label: 'Learn',
+    icon: Icon(Icons.school_outlined),
     route: '/',
   ),
   NavigationDestination(
-    label: 'Writing',
-    icon: Icon(Icons.history_edu),
-    route: '/writing',
+    label: 'Practice',
+    icon: Icon(Icons.insights_outlined),
+    route: '/practice',
   ),
   NavigationDestination(
-    label: 'Vocabulary',
-    icon: Icon(Icons.chat_bubble_outline),
-    route: '/vocabulary',
+    label: 'Notification',
+    icon: Icon(Icons.notifications_outlined),
+    route: '/notification',
   ),
   NavigationDestination(
-    label: 'Chat',
-    icon: Icon(Icons.forum_outlined),
-    route: '/chat',
-  ),
-  NavigationDestination(
-    label: 'Account',
-    icon: Icon(Icons.person),
-    route: '/account',
+    label: 'Profile',
+    icon: Icon(Icons.person_outline),
+    route: '/profile',
   ),
 ];
 
