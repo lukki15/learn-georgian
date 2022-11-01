@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../features/learn/view/learn_screen.dart';
+import 'package:learn_georgian/src/features/learn/view/learn_screen.dart';
+import 'package:learn_georgian/src/features/writing/view/writing_screen.dart';
 
 import 'views/root_layout.dart';
 
@@ -70,5 +71,16 @@ final appRouter = GoRouter(
           ),
         ),
       ),
+    GoRoute(
+      path: '/writing',
+      pageBuilder: (context, state) => const MaterialPage<void>(
+        key: _pageKey,
+        child: RootLayout(
+          key: _scaffoldKey,
+          currentIndex: 0,
+          child: WritingScreen(),
+        ),
+      ),
+    ),
   ],
 );

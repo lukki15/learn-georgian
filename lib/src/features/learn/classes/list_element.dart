@@ -5,7 +5,7 @@ class ListElement {
   final String title;
   final CoverImage image;
   final Color color;
-  int completion;
+  final int completion;
 
   ListElement(this.title, this.image, this.color, this.completion);
 }

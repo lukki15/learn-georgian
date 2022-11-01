@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:adaptive_components/adaptive_components.dart';
+import 'package:go_router/go_router.dart';
 
 import '../classes/list_element.dart';
 
@@ -55,6 +56,7 @@ class MobileHome extends StatelessWidget {
                   Icons.incomplete_circle,
                   color: element.color,
                 ),
+                onTap: () => GoRouter.of(context).go('/writing'),
               );
             },
             separatorBuilder: (BuildContext context, int index) =>
