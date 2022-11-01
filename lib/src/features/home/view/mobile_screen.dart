@@ -37,29 +37,7 @@ class MobileHome extends StatelessWidget {
         ),
         AdaptiveContainer(
           columnSpan: 12,
-          child: AppBar(
-            centerTitle: false,
-            title: Text('Your Lessons', style: context.titleLarge),
-            actions: [
-              IconButton(
-                isSelected: true,
-                icon: const Icon(Icons.view_list),
-                tooltip: 'List Mode',
-                onPressed: () {
-                  ScaffoldMessenger.of(context)
-                      .showSnackBar(const SnackBar(content: Text('list')));
-                },
-              ),
-              IconButton(
-                icon: const Icon(Icons.widgets),
-                tooltip: 'Widget Mode',
-                onPressed: () {
-                  ScaffoldMessenger.of(context)
-                      .showSnackBar(const SnackBar(content: Text('widget')));
-                },
-              )
-            ],
-          ),
+          child: Text('Your Lessons', style: context.titleLarge),
         ),
         AdaptiveContainer(
           columnSpan: 12,
@@ -80,7 +58,9 @@ class MobileHome extends StatelessWidget {
               );
             },
             separatorBuilder: (BuildContext context, int index) =>
-                const Divider(),
+                const Divider(
+              color: Colors.transparent,
+            ),
           ),
         )
       ],

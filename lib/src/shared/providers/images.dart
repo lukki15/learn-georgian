@@ -29,6 +29,13 @@ class CustomImageProvider {
         sourceName: 'icons8');
   }
 
+  static CoverImage pencil() {
+    return const CoverImage(
+        image: 'assets/images/icons/pencil-96.png',
+        sourceLink: 'https://icons8.com/icon/18709/pencil',
+        sourceName: 'icons8');
+  }
+
   static CoverImage reading() {
     return const CoverImage(
         image: 'assets/images/icons/reading-96.png',

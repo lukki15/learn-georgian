@@ -19,6 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final List<ListElement> homeElements = [
+      ListElement("Writing", CustomImageProvider.pencil(), Colors.orange, 74),
       ListElement("Reading", CustomImageProvider.reading(), Colors.green, 74),
       ListElement("Listening", CustomImageProvider.headset(), Colors.blue, 59),
       ListElement("Speaking", CustomImageProvider.megaphone(), Colors.red, 32),
