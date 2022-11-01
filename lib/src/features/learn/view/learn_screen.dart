@@ -6,16 +6,16 @@ import 'package:learn_georgian/src/shared/extensions.dart';
 import 'package:learn_georgian/src/shared/views/brightness_toggle.dart';
 
 import 'mobile_screen.dart';
-import '../classes/home_list.dart';
+import '../classes/list_element.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class LearnScreen extends StatefulWidget {
+  const LearnScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<LearnScreen> createState() => _LearnScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _LearnScreenState extends State<LearnScreen> {
   @override
   Widget build(BuildContext context) {
     final List<ListElement> homeElements = [

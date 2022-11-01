@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:adaptive_components/adaptive_components.dart';
 
-import '../classes/home_list.dart';
+import '../classes/list_element.dart';
 
 import '../../../shared/extensions.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../features/home/view/home_screen.dart';
+import '../features/learn/view/learn_screen.dart';
 
 import 'views/root_layout.dart';
 
@@ -47,7 +47,6 @@ class NavigationDestination {
 
 final appRouter = GoRouter(
   routes: [
-    // // HomeScreen
     GoRoute(
       path: '/',
       pageBuilder: (context, state) => const MaterialPage<void>(
@@ -55,11 +54,10 @@ final appRouter = GoRouter(
         child: RootLayout(
           key: _scaffoldKey,
           currentIndex: 0,
-          child: HomeScreen(),
+          child: LearnScreen(),
         ),
       ),
     ),
-
     for (final route in destinations.skip(1))
       GoRoute(
         path: route.route,
