@@ -56,7 +56,8 @@ class MobileHome extends StatelessWidget {
                   Icons.incomplete_circle,
                   color: element.color,
                 ),
-                onTap: () => GoRouter.of(context).go('/writing'),
+                onTap: () =>
+                    GoRouter.of(context).go('/writing'), // TODO: push()
               );
             },
             separatorBuilder: (BuildContext context, int index) =>
