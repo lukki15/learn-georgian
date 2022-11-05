@@ -18,7 +18,10 @@ class WritingScreen extends StatelessWidget {
             tooltip: 'Show Settings',
             onPressed: () {},
           ),
-          title: const Text("Writing"),
+          title: LinearProgressIndicator(
+            backgroundColor: Theme.of(context).colorScheme.onPrimary,
+            value: 0.25,
+          ),
           actions: [
             IconButton(
               icon: const Icon(Icons.tune),
@@ -80,12 +83,18 @@ class WritingScreen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Container(
+                  width: double.infinity,
                   decoration: BoxDecoration(
                       border: Border.all(
                         color: Theme.of(context).colorScheme.outline,
                       ),
                       borderRadius:
                           const BorderRadius.all(Radius.circular(10))),
+                  child: Center(
+                      child: Text(
+                    'ა',
+                    style: context.displayLarge,
+                  )),
                 ),
               ),
             ),
