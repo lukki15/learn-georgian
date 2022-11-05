@@ -75,11 +75,7 @@ final appRouter = GoRouter(
       path: '/writing',
       pageBuilder: (context, state) => const MaterialPage<void>(
         key: _pageKey,
-        child: RootLayout(
-          key: _scaffoldKey,
-          currentIndex: 0,
-          child: WritingScreen(),
-        ),
+        child: WritingScreen(),
       ),
     ),
   ],

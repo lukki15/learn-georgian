@@ -1,7 +1,10 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:adaptive_components/adaptive_components.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:learn_georgian/src/shared/extensions.dart';
 
@@ -14,59 +17,58 @@ class WritingScreen extends StatelessWidget {
       return Scaffold(
         appBar: AppBar(
           leading: IconButton(
-            icon: const Icon(Icons.close),
-            tooltip: 'Show Settings',
-            onPressed: () {},
-          ),
+              icon: const Icon(Icons.close),
+              tooltip: 'Show Settings',
+              onPressed: () => GoRouter.of(context).go('/')),
           title: LinearProgressIndicator(
             backgroundColor: Theme.of(context).colorScheme.onPrimary,
             value: 0.25,
           ),
           actions: [
             IconButton(
-              icon: const Icon(Icons.tune),
-              tooltip: 'Show Settings',
+              icon: const Icon(Icons.flag),
+              tooltip: 'Report',
               onPressed: () {},
             )
           ],
         ),
         body: Column(
           children: [
-            Container(
-                child: Text(
+            Text(
               "Practice this character",
               style: context.headlineSmall,
-            )),
-            Container(
-              child: AppBar(
-                title: Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Theme.of(context).colorScheme.outline,
-                      ),
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(10))),
-                  child: Row(children: const [
-                    Expanded(child: Center(child: Text("ა"))),
-                    Expanded(child: Center(child: Text("a"))),
-                  ]),
-                ),
-                actions: [
-                  IconButton(
-                    icon: const Icon(Icons.volume_up),
-                    tooltip: 'Show Settings',
-                    onPressed: () {},
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.speed),
-                    tooltip: 'Show Settings',
-                    onPressed: () {},
-                  )
-                ],
-              ),
             ),
-            Container(
-                child: NavigationBar(
+            AppBar(
+              title: Container(
+                decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Theme.of(context).colorScheme.outline,
+                    ),
+                    borderRadius: const BorderRadius.all(Radius.circular(10))),
+                child: Row(children: [
+                  Expanded(
+                      child: Center(
+                          child: Text(
+                    "ა",
+                    style: context.headlineMedium,
+                  ))),
+                  const Expanded(child: Center(child: Text("a"))),
+                ]),
+              ),
+              actions: [
+                IconButton(
+                  icon: const Icon(Icons.volume_up),
+                  tooltip: 'Show Settings',
+                  onPressed: () {},
+                ),
+                IconButton(
+                  icon: const Icon(Icons.speed),
+                  tooltip: 'Show Settings',
+                  onPressed: () {},
+                )
+              ],
+            ),
+            NavigationBar(
               // backgroundColor: Colors.transparent,
               elevation: 0,
               surfaceTintColor: Colors.transparent,
@@ -78,7 +80,7 @@ class WritingScreen extends StatelessWidget {
                 NavigationDestination(
                     icon: Icon(Icons.history_edu), label: 'Writing'),
               ],
-            )),
+            ),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
