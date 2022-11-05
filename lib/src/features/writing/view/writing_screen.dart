@@ -27,21 +27,27 @@ class WritingScreen extends StatelessWidget {
             )
           ],
         ),
-        body: AdaptiveColumn(
+        body: Column(
           children: [
-            AdaptiveContainer(
-                columnSpan: 12,
+            Container(
                 child: Text(
-                  "Practice this character",
-                  style: context.headlineSmall,
-                )),
-            AdaptiveContainer(
-              columnSpan: 12,
+              "Practice this character",
+              style: context.headlineSmall,
+            )),
+            Container(
               child: AppBar(
-                title: Row(children: const [
-                  Expanded(child: Center(child: Text("ა"))),
-                  Expanded(child: Center(child: Text("a"))),
-                ]),
+                title: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Theme.of(context).colorScheme.outline,
+                      ),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(10))),
+                  child: Row(children: const [
+                    Expanded(child: Center(child: Text("ა"))),
+                    Expanded(child: Center(child: Text("a"))),
+                  ]),
+                ),
                 actions: [
                   IconButton(
                     icon: const Icon(Icons.volume_up),
@@ -56,21 +62,54 @@ class WritingScreen extends StatelessWidget {
                 ],
               ),
             ),
-            AdaptiveContainer(
-                columnSpan: 12,
+            Container(
                 child: NavigationBar(
-                  // backgroundColor: Colors.transparent,
-                  elevation: 0,
-                  surfaceTintColor: Colors.transparent,
-                  destinations: const [
-                    NavigationDestination(
-                        icon: Icon(Icons.play_arrow), label: 'Animation'),
-                    NavigationDestination(
-                        icon: Icon(Icons.timeline), label: 'Show Arrow'),
-                    NavigationDestination(
-                        icon: Icon(Icons.history_edu), label: 'Writing'),
-                  ],
-                )),
+              // backgroundColor: Colors.transparent,
+              elevation: 0,
+              surfaceTintColor: Colors.transparent,
+              destinations: const [
+                NavigationDestination(
+                    icon: Icon(Icons.play_arrow), label: 'Animation'),
+                NavigationDestination(
+                    icon: Icon(Icons.timeline), label: 'Show Arrow'),
+                NavigationDestination(
+                    icon: Icon(Icons.history_edu), label: 'Writing'),
+              ],
+            )),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Theme.of(context).colorScheme.outline,
+                      ),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(10))),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: null,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text(
+                          "NEXT",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 8.0),
+                          child: Icon(Icons.east),
+                        )
+                      ],
+                    ),
+                  )),
+            )
           ],
         ),
       );
