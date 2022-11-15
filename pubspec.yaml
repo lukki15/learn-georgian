@@ -31,12 +31,12 @@ environment:
 dependencies:
   adaptive_components: ^0.0.7
   desktop_window: ^0.4.0
+  drawing_animation: ^1.0.0
   dynamic_color: ^1.5.4
   flutter:
     sdk: flutter
   go_router: ^5.0.5
   google_fonts: ^3.0.1
-  path_drawing: ^1.0.1
   universal_platform: ^1.0.0+1
 
 
