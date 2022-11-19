@@ -4,6 +4,7 @@ import 'package:drawing_animation/drawing_animation.dart';
 import 'dart:math';
 
 import 'package:learn_georgian/src/shared/extensions.dart';
+import 'package:learn_georgian/src/shared/providers/characters.dart';
 
 class WritingScreen extends StatelessWidget {
   const WritingScreen({super.key});
@@ -46,10 +47,13 @@ class WritingScreen extends StatelessWidget {
                   Expanded(
                       child: Center(
                           child: Text(
-                    "ა",
+                    CharactersProvider.characters[0].character,
                     style: context.headlineMedium,
                   ))),
-                  const Expanded(child: Center(child: Text("a"))),
+                  Expanded(
+                      child: Center(
+                          child: Text(CharactersProvider
+                              .characters[0].representation))),
                 ]),
               ),
               actions: [
@@ -65,39 +69,7 @@ class WritingScreen extends StatelessWidget {
                 )
               ],
             ),
-            NavigationBar(
-              // backgroundColor: Colors.transparent,
-              elevation: 0,
-              surfaceTintColor: Colors.transparent,
-              destinations: const [
-                NavigationDestination(
-                    icon: Icon(Icons.play_arrow), label: 'Animation'),
-                NavigationDestination(
-                    icon: Icon(Icons.timeline), label: 'Show Arrow'),
-                NavigationDestination(
-                    icon: Icon(Icons.history_edu), label: 'Writing'),
-              ],
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Theme.of(context).colorScheme.outline,
-                      ),
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(10))),
-                  child: const Center(
-                      child: SizedBox(
-                          width: 46.174487,
-                          height: 56.783624,
-                          child: _Animated())),
-                  // child: const Center(child: Text('TEST')),
-                ),
-              ),
-            ),
+            const Expanded(child: _WritingMenuArea()),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: SizedBox(
@@ -126,47 +98,91 @@ class WritingScreen extends StatelessWidget {
   }
 }
 
-class _Animated extends StatelessWidget {
-  const _Animated({
+final Paint _paint = Paint()
+  ..color = Colors.blue
+  ..style = PaintingStyle.stroke
+  ..strokeWidth = 2.0
+  ..strokeJoin = StrokeJoin.round;
+
+class _WritingMenuArea extends StatefulWidget {
+  const _WritingMenuArea({
     Key? key,
   }) : super(key: key);
 
-  static final Paint _paint = Paint()
-    ..color = Colors.blue
-    ..style = PaintingStyle.stroke
-    ..strokeWidth = 2.0
-    ..strokeJoin = StrokeJoin.round;
+  @override
+  State<_WritingMenuArea> createState() => _WritingMenuAreaState();
+}
+
+class _WritingMenuAreaState extends State<_WritingMenuArea> {
+  int currentPageIndex = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        NavigationBar(
+          onDestinationSelected: (int index) {
+            setState(() {
+              currentPageIndex = index;
+            });
+          },
+          selectedIndex: currentPageIndex,
+          elevation: 0,
+          surfaceTintColor: Colors.transparent,
+          destinations: const [
+            NavigationDestination(
+                icon: Icon(Icons.play_arrow), label: 'Animation'),
+            NavigationDestination(
+                icon: Icon(Icons.timeline), label: 'Show Arrow'),
+            NavigationDestination(
+                icon: Icon(Icons.history_edu), label: 'Writing'),
+          ],
+        ),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Theme.of(context).colorScheme.outline,
+                  ),
+                  borderRadius: const BorderRadius.all(Radius.circular(10))),
+              child: Center(child: _writingArea()),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _writingArea() {
+    const width = 46.174487;
+    const height = 56.783624;
+
+    if (currentPageIndex > 1) {
+      return Container();
+    }
+
+    final duration = currentPageIndex == 0 ? 3 : 0;
+    return SizedBox(
+        width: width, height: height, child: _AnimatedPainter(duration));
+  }
+}
+
+class _AnimatedPainter extends StatelessWidget {
+  final int seconds;
+  const _AnimatedPainter(
+    this.seconds, {
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    const List<Point> points = [
-      Point(1.514, 7.374),
-      Point(1.294, 8.283),
-      Point(1.210, 9.438),
-      Point(2.105, 12.314),
-      Point(3.824, 13.599),
-      Point(6.109, 14.020),
-      Point(8.569, 13.488),
-      Point(10.085, 12.190),
-      Point(10.965, 9.301),
-      Point(10.457, 7.003),
-      Point(9.232, 5.284),
-      Point(7.911, 3.880),
-      Point(6.618, 2.173),
-      Point(6.081, 0.000),
-    ];
-
-    final path = Path();
-    path.moveTo(points[0].x.toDouble(), points[0].y.toDouble());
-    points.skip(1).forEach((element) {
-      path.lineTo(element.x.toDouble(), element.y.toDouble());
-    });
-
     return AnimatedDrawing.paths(
-      [path],
+      [CharactersProvider.characters[0].path],
       paints: [_paint],
       run: true,
-      duration: const Duration(seconds: 10),
+      duration: Duration(seconds: seconds),
       onFinish: () => {},
     );
   }
