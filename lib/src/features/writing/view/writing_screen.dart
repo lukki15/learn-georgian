@@ -98,12 +98,6 @@ class WritingScreen extends StatelessWidget {
   }
 }
 
-final Paint _paint = Paint()
-  ..color = Colors.blue
-  ..style = PaintingStyle.stroke
-  ..strokeWidth = 2.0
-  ..strokeJoin = StrokeJoin.round;
-
 class _WritingMenuArea extends StatefulWidget {
   const _WritingMenuArea({
     Key? key,
@@ -155,6 +149,12 @@ class _WritingMenuAreaState extends State<_WritingMenuArea> {
     );
   }
 
+  final Paint _paint = Paint()
+    ..color = Colors.blue
+    ..style = PaintingStyle.stroke
+    ..strokeWidth = 2.0
+    ..strokeJoin = StrokeJoin.round;
+
   Widget _writingArea() {
     const width = 46.174487;
     const height = 56.783624;
@@ -165,25 +165,21 @@ class _WritingMenuAreaState extends State<_WritingMenuArea> {
 
     final duration = currentPageIndex == 0 ? 3 : 0;
     return SizedBox(
-        width: width, height: height, child: _AnimatedPainter(duration));
-  }
-}
-
-class _AnimatedPainter extends StatelessWidget {
-  final int seconds;
-  const _AnimatedPainter(
-    this.seconds, {
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedDrawing.paths(
-      [CharactersProvider.characters[0].path],
-      paints: [_paint],
-      run: true,
-      duration: Duration(seconds: seconds),
-      onFinish: () => {},
-    );
+        width: width,
+        height: height,
+        child: AnimatedDrawing.paths(
+          [CharactersProvider.characters[0].path],
+          paints: [_paint],
+          run: true,
+          duration: Duration(seconds: duration),
+          onFinish: () => {
+            if (currentPageIndex == 0)
+              {
+                setState(() {
+                  currentPageIndex = 1;
+                })
+              }
+          },
+        ));
   }
 }
